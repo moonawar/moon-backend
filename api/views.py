@@ -31,8 +31,6 @@ class GetDialogueView(generics.ListAPIView):
     queryset = Dialogue.objects.all()
 
 class UpdateDialogue(APIView):
-
-
     def get_object(self, id):
         try:
             return Dialogue.objects.get(id=id)
