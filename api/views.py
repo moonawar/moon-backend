@@ -14,7 +14,6 @@ class CreateDialogueView(generics.CreateAPIView):
 class GetDialogueView(generics.ListAPIView):
     serializer_class = DialogueSerializer
     queryset = Dialogue.objects.all()
-    permissions_classes = [permissions.IsAuthenticated]
 
 class UpdateDialogueView(generics.UpdateAPIView):
     queryset = Dialogue.objects.all()
