@@ -7,6 +7,7 @@ class Dialogue(models.Model):
     by = models.CharField(max_length=25)
     text = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveSmallIntegerField(default=0, blank=True)
 
     def __str__(self):
         return f"Dialogue by {self.by} in {self.page}[{self.id}]"
