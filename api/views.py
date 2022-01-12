@@ -10,7 +10,8 @@ from api.serializers import DialogueSerializer
 
 # Create your views here.
 class DialoguePage(APIView):
-    permission_classes = permissions.AllowAny
+    permission_classes = [permissions.AllowAny]
+    
     def get_list(self, page):
         try:
             return Dialogue.objects.filter(page=page)
