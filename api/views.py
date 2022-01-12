@@ -1,7 +1,7 @@
 from django.http import request
 from django.http.response import Http404
 from django.shortcuts import render
-from rest_framework import serializers, status, generics
+from rest_framework import serializers, status, generics, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -10,6 +10,7 @@ from api.serializers import DialogueSerializer
 
 # Create your views here.
 class DialoguePage(APIView):
+    permission_classes = permissions.AllowAny
     def get_list(self, page):
         try:
             return Dialogue.objects.filter(page=page)
@@ -31,6 +32,7 @@ class GetDialogueView(generics.ListAPIView):
     queryset = Dialogue.objects.all()
 
 class UpdateDialogue(APIView):
+
     def get_object(self, id):
         try:
             return Dialogue.objects.get(id=id)
