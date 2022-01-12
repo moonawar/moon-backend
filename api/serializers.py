@@ -5,4 +5,4 @@ from .models import Dialogue
 class DialogueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dialogue
-        fields = ['by', 'page', 'context','text']
+        fields = ['by', 'page', 'context','text', 'order']
