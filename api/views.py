@@ -19,7 +19,7 @@ class DialoguePage(APIView):
             raise Http404
     
     def get(self, request, page, format=None):
-        dialogues = self.get_list(page)
+        dialogues = self.get_list(page).order_by('id')
         serializer = DialogueSerializer(dialogues, many=True)
         return Response(serializer.data)
 
