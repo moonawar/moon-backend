@@ -28,12 +28,15 @@ class CreateDialogueView(generics.CreateAPIView):
     serializer_class = DialogueSerializer
 
 
-class GetDialogueView(generics.ListAPIView):
-    serializer_class = DialogueSerializer
-    queryset = Dialogue.objects.all()
+class GetDialogueView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, format=None):
+        dialogues = Dialogue.objects.all().order_by('id')
+        serializer = DialogueSerializer(dialogues, many=True)
+        return Response(serializer.data)
 
 class UpdateDialogue(APIView):
-
     def get_object(self, id):
         try:
             return Dialogue.objects.get(id=id)
